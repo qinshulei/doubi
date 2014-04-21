@@ -1,5 +1,8 @@
 var express = require('express');
+
 var checkSignature=require('./checkSignature');
+var parsexml=require('./parsexml');
+var replydata=require('./replydata');
 var config=require('../config');
 
 var router = express.Router();
@@ -13,12 +16,35 @@ router.get('/', function(req, res) {
     console.log("nonce:"+nonce);
     var echostr = req.echostr;
     console.log("echostr:"+echostr);
-    
+  
+
     if(checkSignature(signature,timestamp,nonce,token)){
-        res.send();
+
+        res.send(echostr);
+
     }else{
         //  res.render('index', { title: 'Express' });
+        res.send("error");
     }
+
+
+});
+
+router.post('/',function(req,res){
+
+    var str="";
+
+    req.on("data", function(data){
+        str = str + data.toString();
+    });
+
+    req.on("end",function(){
+        parsexml(str,function(data){
+
+            res.send(replydata(data));
+
+        });
+    });
 
 });
 
