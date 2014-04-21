@@ -6,11 +6,11 @@ module.exports=function(data){
     
     var msg="";
     if(data.MsgType=="text"){
-        msg="谢谢关注,你说的是："+Content;
+        msg="谢谢关注,你说的是："+ data.Content;
     }else if (data.MsgType="location"){
-        msg="你所在的位置: 经度："+Location_X+"纬度："+Location_Y;
+        msg="你所在的位置: 经度："+ data.Location_X+"纬度："+ data.Location_Y;
     }else if (data.MsgType="image"){
-        msg="你发的图片是："+PicUrl;
+        msg="你发的图片是："+ data.PicUrl;
     }
     console.log(msg);
 
