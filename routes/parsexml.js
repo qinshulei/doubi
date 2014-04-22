@@ -1,5 +1,13 @@
 var xml = require('node-xml');
 
+/**
+ * parse xml string to data object. 
+ * and callback when parse success.
+ *
+ * @param {String} str  ,message from weixin
+ * @param {Function} callback      ,be invoked when parse success
+ * @api public
+ */
 module.exports = function(str,callback){
 
     var data = {

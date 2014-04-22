@@ -6,7 +6,8 @@ var replydata=require('./replydata');
 var config=require('../config');
 
 var router = express.Router();
-/* GET home page. */
+
+/* check signature. */
 router.get('/', function(req, res) {
     var signature = req.signature;
     console.log("signature:"+signature);
@@ -30,6 +31,7 @@ router.get('/', function(req, res) {
 
 });
 
+/* process message from weixin. */
 router.post('/',function(req,res){
 
     var str="";

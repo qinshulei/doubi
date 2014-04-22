@@ -1,5 +1,13 @@
 var XML=require('xml');
 
+/**
+ * genarate reply string through the massage data .
+ * Now , only reply the origin message
+ *
+ * @param {Object} data  ,object prased from message
+ * @return {String} replydata      ,reply xml string
+ * @api public
+ */
 module.exports=function(data){
     
     var time = getCurrentTime();
