@@ -34,7 +34,14 @@ router.get('/', function(req, res) {
 /* process message from weixin. */
 router.post('/',function(req,res){
 
-    res.send(replydata(req.body.toString()));
+    var str = "";
+    req.on("data",function(data){
+        str = str + data;
+    });
+
+    req.on("end",function(){
+        res.send(replydata(str));
+    });
 
 });
 
