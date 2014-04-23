@@ -32,19 +32,7 @@ router.get('/', function(req, res) {
 
 router.post('/',function(req,res){
 
-    var str="";
-
-    req.on("data", function(data){
-        str = str + data.toString();
-    });
-
-    req.on("end",function(){
-        parsexml(str,function(data){
-
-            res.send(replydata(data));
-
-        });
-    });
+    res.send(replydata(req.body.toString()));
 
 });
 
