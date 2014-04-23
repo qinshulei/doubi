@@ -36,7 +36,7 @@ router.post('/',function(req,res){
 
     var str = "";
     req.on("data",function(data){
-        str = str + data;
+        str = str + data.toString();
     });
 
     req.on("end",function(){
